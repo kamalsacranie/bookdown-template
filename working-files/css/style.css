@@ -15,9 +15,11 @@ pre code {
   white-space: inherit;
 }
 
+pre.numberSource code > span > a:first-child::before {
+  left: -0.1em;
+}
 
 /* =============Tooltip CSS================= */
-
 .tooltip {
   position: relative;
   color: #990099;
@@ -35,7 +37,7 @@ pre code {
   background:rgb(244, 119, 244);
   color: #000;
   text-align: left;
-
+  
   display:none;
 
   .base * {
