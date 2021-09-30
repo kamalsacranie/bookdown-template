@@ -44,3 +44,4 @@ vignettes/*.pdf
 
 # Ignore docs
 docs/
+working-files/book/_bookdown_files/
