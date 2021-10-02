@@ -3,6 +3,9 @@
 \usepackage{multicol}
 \usepackage[edges]{forest}
 \usepackage{fancyhdr}
+% Setting our text to not bet justified across the whole page and no hyphen
+\usepackage[document]{ragged2e}
+\usepackage[none]{hyphenat}
 
 % Importing our tikz
 \usetikzlibrary{trees}
@@ -12,4 +15,8 @@
 \hypersetup {colorlinks = true, linkcolor = blue, urlcolor = blue}
 
 % Changing chaper text
-\renewcommand{\chaptername}{Chapter}
+\renewcommand{\chaptername}{Lecture}
+% Chaning padding between footnote line and text
+\addtolength{\skip\footins}{1em}
+% % Change space between bullets
+\renewcommand{\tightlist}{\setlength{\itemsep}{0.4em}\setlength{\parskip}{0pt}}
