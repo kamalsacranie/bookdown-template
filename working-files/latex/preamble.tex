@@ -3,6 +3,7 @@
 \usepackage{multicol}
 \usepackage[edges]{forest}
 \usepackage{fancyhdr}
+\usepackage{titlesec}
 % Setting our text to not bet justified across the whole page and no hyphen
 \usepackage[document]{ragged2e}
 \usepackage[none]{hyphenat}
@@ -20,3 +21,7 @@
 \addtolength{\skip\footins}{1em}
 % % Change space between bullets
 \renewcommand{\tightlist}{\setlength{\itemsep}{0.4em}\setlength{\parskip}{0pt}}
+% Decreasing space before chapter title
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
