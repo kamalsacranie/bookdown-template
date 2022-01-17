@@ -1,10 +1,10 @@
---- 
+---
 title: "Placeholder Title"
 author: "Kamal Sacranie"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: report
-bibliography: [../sources/book.bib]
+bibliography: []
 biblio-style: apalike
 link-citations: yes
 geometry: margin=2cm
