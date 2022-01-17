@@ -7,7 +7,7 @@ documentclass: report
 bibliography: []
 biblio-style: apalike
 link-citations: yes
-geometry: margin=2cm
+geometry: margin=3cm
 description: ""
 ---
 

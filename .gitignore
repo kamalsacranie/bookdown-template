@@ -42,6 +42,9 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
+# Log files
+**/*.log
+
 # Ignore docs
 docs/
 **/_bookdown_files/
