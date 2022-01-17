@@ -34,3 +34,21 @@
 \setcounter{topnumber}{3}
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{4}
+
+% Creating shaded indented box for quote
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\colorlet{shadecolor}{black!10!white}
+\renewenvironment{quote}{
+    \begin{mdframed}[
+        backgroundcolor=shadecolor,
+        leftmargin=1cm,
+        rightmargin=1cm,
+        topline=false,
+        rightline=false,
+        bottomline=false,
+    ]
+}{
+    \end{mdframed}
+}
