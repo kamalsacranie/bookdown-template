@@ -35,20 +35,25 @@
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{4}
 
+
 % Creating shaded indented box for quote
 \usepackage{xcolor}
-\usepackage{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}
 
-\colorlet{shadecolor}{black!10!white}
+\colorlet{shadecolor}{black!5!white}
+\mdfsetup{
+    skipabove=\topskip,
+    skipbelow=\parskip,
+    backgroundcolor=shadecolor,
+    leftmargin=0.5cm,
+    rightmargin=0.5cm,
+    topline=false,
+    rightline=false,
+    bottomline=false,
+}
+
 \renewenvironment{quote}{
-    \begin{mdframed}[
-        backgroundcolor=shadecolor,
-        leftmargin=1cm,
-        rightmargin=1cm,
-        topline=false,
-        rightline=false,
-        bottomline=false,
-    ]
+    \begin{mdframed}\itshape
 }{
     \end{mdframed}
 }
