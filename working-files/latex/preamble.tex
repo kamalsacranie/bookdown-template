@@ -13,17 +13,20 @@
 \usetikzlibrary{backgrounds}
 
 % Setting up our hyperlinks
-\hypersetup {colorlinks = true, linkcolor = blue, urlcolor = blue}
+\hypersetup{colorlinks = true, linkcolor = blue, urlcolor = blue}
 
 % Changing chaper text
 \renewcommand{\chaptername}{Lecture}
 % Chaning padding between footnote line and text
 \addtolength{\skip\footins}{1em}
 % % Change space between bullets
-\renewcommand{\tightlist}{\setlength{\itemsep}{0.4em}\setlength{\parskip}{0pt}}
+% \renewcommand{\tightlist}{
+% \setlength{\itemsep}{0.4em}
+% \setlength{\topsep}{1cm}
+% \setlength{\partopsep}{1cm}
+% }
 % Decreasing space before chapter title
-\titleformat{\chapter}[display]
-{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{0pt}{\huge}
+\titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{0pt}{\huge}
 \titlespacing*{\chapter}{10pt}{0pt}{20pt}
 
 % Making the repositioning of our images more forgiving
@@ -35,25 +38,25 @@
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{4}
 
-
 % Creating shaded indented box for quote
 \usepackage{xcolor}
 \usepackage[framemethod=TikZ]{mdframed}
 
 \colorlet{shadecolor}{black!5!white}
 \mdfsetup{
-    skipabove=\topskip,
-    skipbelow=\parskip,
-    backgroundcolor=shadecolor,
-    leftmargin=0.5cm,
-    rightmargin=0.5cm,
-    topline=false,
-    rightline=false,
-    bottomline=false,
+	skipabove=\topskip,
+	skipbelow=\topskip,
+	backgroundcolor=shadecolor,
+	leftmargin=0.5cm,
+	rightmargin=0.5cm,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	nobreak=true,
 }
 
 \renewenvironment{quote}{
-    \begin{mdframed}\itshape
-}{
-    \end{mdframed}
+	\bigskip\begin{mdframed}\itshape
+		}{
+	\end{mdframed}
 }
