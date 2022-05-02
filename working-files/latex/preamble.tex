@@ -1,42 +1,60 @@
-% Aligning the firt letter of any heading with the margin and
-% Pushing the heading number into the margin
+%%%%%%%%%%%% GITHUB TEMPLATE
+
+% Making headings start at same place at first lettter
 \usepackage{titlesec}
 \titlelabel{\llap{\thetitle\quad}}
 
+%%%%% Packages that need no configuration
 % Footnotes fixed to bottom
 \usepackage[bottom]{footmisc}
-
-% Importing our necessary packages
-\usepackage{booktabs}
+% Allows us to use "H" positioning for floats if necessary
+\usepackage{float}
+% Allows us to cancel stuff
+\usepackage{cancel}
 \usepackage{booktabs}
 \usepackage{multicol}
+% TBC
 \usepackage[edges]{forest}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
+% Allows us to have sufigures
+\usepackage{subfig}
 % Setting our text to not bet justified across the whole page and no hyphen
 \usepackage[document]{ragged2e}
 \usepackage[none]{hyphenat}
+% Macros for differentials
+\usepackage[thinc]{esdiff}
 
-% Importing our tikz
+% Importing our tikz for making diagrams
 \usetikzlibrary{trees}
 \usetikzlibrary{backgrounds}
 
-% Setting up our hyperlinks
-\hypersetup{colorlinks = true, linkcolor = blue, urlcolor = blue}
+% Setting our mono code to Hasklug (must be install on system)
+\usepackage{fontspec}
+\setmonofont[
+	Contextuals={Alternate} % Gives us ligatures
+]{Hasklug Nerd Font}
 
 % Changing chaper text
-\renewcommand{\chaptername}{Lecture}
+\renewcommand{\chaptername}{Chapter}
+
 % Chaning padding between footnote line and text
 \addtolength{\skip\footins}{1em}
-% % Change space between bullets
-% \renewcommand{\tightlist}{
-% \setlength{\itemsep}{0.4em}
-% \setlength{\topsep}{1cm}
-% \setlength{\partopsep}{1cm}
-% }
+
 % Decreasing space before chapter title
-\titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{0pt}{\huge}
+\titleformat{\chapter}[display]{
+	\normalfont\Large\bfseries
+}{\chaptertitlename\ \thechapter}{0pt}{\huge}
 \titlespacing*{\chapter}{10pt}{0pt}{20pt}
+
+% Change space between bullets
+\renewcommand{\tightlist}{
+	\setlength{\parsep}{1em}
+	\setlength{\parskip}{0em}
+	\setlength{\topsep}{0em}
+	\setlength{\itemsep}{0em}
+	\setlength{\partopsep}{0.8em}
+}
+% Chaging the second intented bulled to a circle
+\renewcommand{\labelitemii}{$\circ$}
 
 % Making the repositioning of our images more forgiving
 \renewcommand{\topfraction}{.85}
@@ -47,25 +65,111 @@
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{4}
 
+% fancyhdr for header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Kamal Sacranie}
+\fancyhead[L]{Chapter \thechapter}
+\fancyfoot[C]{\thepage}
+% Changing header rule style
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
 % Creating shaded indented box for quote
 \usepackage{xcolor}
 \usepackage[framemethod=TikZ]{mdframed}
 
-\colorlet{shadecolor}{black!5!white}
-\mdfsetup{
-	skipabove=\topskip,
-	skipbelow=\topskip,
-	backgroundcolor=shadecolor,
-	leftmargin=0.5cm,
-	rightmargin=0.5cm,
-	topline=false,
-	rightline=false,
-	bottomline=false,
-	nobreak=true,
-}
-
+% This is how you define a color in latex
+\colorlet{quoteshadecolor}{black!5!white}
+% Renewingn our quote environemnt with the new color and a line on th eleft
 \renewenvironment{quote}{
-	\bigskip\begin{mdframed}\itshape
+	\bigskip\begin{mdframed}[
+			skipabove=\topskip,
+			skipbelow=\topskip,
+			backgroundcolor=quoteshadecolor,
+			leftmargin=0.5cm,
+			rightmargin=0.5cm,
+			topline=false,
+			rightline=false,
+			bottomline=false,
+			nobreak=true,
+		]\itshape%itemshape is for italics
 		}{
 	\end{mdframed}
 }
+
+
+%%%%%%%%%%%% Tcolorboxes
+% Defining our shadecolor (used fo shading code blocks usually)
+\definecolor{code}{RGB}{1,22,80} % This is how you define a color in latex
+\colorlet{shadecolor}{code} % redefining our shadecolor to be code color
+
+%%%%%%%% Code mdframedbox
+% Using tcolorbox to make a background box
+\usepackage[many, listings]{tcolorbox}
+\newtcolorbox{codeboxback}{
+	enhanced,
+	colback=white!50!black,
+	colframe=white!50!black,
+	fonttitle=\bfseries,
+	breakable,
+	drop fuzzy midday shadow=black!30!white,
+}
+% Renewing the shaded environemnt with new mdframed box
+\renewenvironment{Shaded}{
+	\bigskip
+	% \begin{codeboxback}%[drop fuzzy midday shadow]
+	\begin{mdframed}[
+			skipabove=\topskip*2,
+			outerlinewidth= 0,
+			linewidth=0pt,
+			roundcorner= 3pt,
+			backgroundcolor= shadecolor,
+			outerlinecolor= shadecolor,
+			innertopmargin= \topskip,
+			innerbottommargin=\topskip,
+			leftmargin=-0.4cm,
+			rightmargin=-0.4cm
+		]}{
+	\end{mdframed}
+	% \end{codeboxback}
+	\smallskip
+}
+
+%%%%% THE SOLUTION TO WRAPPING ENVS!!!
+% Styling code output
+\AddToHook{env/verbatim/before}{\begin{mdframed}[
+			skipabove=\topskip*2,
+			outerlinewidth= 0,
+			linewidth=0pt,
+			backgroundcolor= black!10!white,
+			outerlinecolor= black!40!white,
+			roundcorner=5pt,
+			innertopmargin= \topskip,
+			innerbottommargin=\topskip,
+		]}
+		\AddToHook{env/verbatim/after}{\end{mdframed}}
+
+% Styling the example box
+\newtcolorbox{examplebox}[2][]{
+	colback=green!20!white,
+	colframe=green!20!black,
+	coltitle=white,
+	fonttitle=\bfseries,
+	colbacktitle=green!20!black,
+	enhanced,
+	breakable,
+	grow to left by=0.5cm,
+	grow to right by=0.5cm,
+	left=0.7cm,
+	right=0.5cm,
+	attach boxed title to top center={yshift=-2mm},
+	title={#2},#1
+}
+% Makes the examplebox handle footnotes correctly
+\makesavenoteenv{examplebox}
+% Enclosing our example envs in a tcolorbox
+\AddToHook{env/example/before}{\begin{examplebox}{Example}}
+		\AddToHook{env/example/after}{\end{examplebox}}
