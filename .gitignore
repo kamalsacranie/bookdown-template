@@ -48,3 +48,6 @@ vignettes/*.pdf
 # Ignore docs
 docs/
 **/_bookdown_files/
+
+# Ignore renv
+renv/
