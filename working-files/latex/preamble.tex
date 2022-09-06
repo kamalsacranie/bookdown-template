@@ -117,26 +117,30 @@
 	breakable,
 	drop fuzzy midday shadow=black!30!white,
 }
-% Renewing the shaded environemnt with new mdframed box
-\renewenvironment{Shaded}{
-	\bigskip
-	% \begin{codeboxback}%[drop fuzzy midday shadow]
-	\begin{mdframed}[
-			skipabove=\topskip*2,
-			outerlinewidth= 0,
-			linewidth=0pt,
-			roundcorner= 3pt,
-			backgroundcolor= shadecolor,
-			outerlinecolor= shadecolor,
-			innertopmargin= \topskip,
-			innerbottommargin=\topskip,
-			leftmargin=-0.4cm,
-			rightmargin=-0.4cm
-		]}{
-	\end{mdframed}
-	% \end{codeboxback}
-	\smallskip
-}
+
+% This allows us to only run code if an environment exists
+\ifcsmacro{Shaded}{
+	% Renewing the shaded environemnt with new mdframed box
+	\renewenvironment{Shaded}{
+		\bigskip
+		% \begin{codeboxback}%[drop fuzzy midday shadow]
+		\begin{mdframed}[
+				skipabove=\topskip*2,
+				outerlinewidth= 0,
+				linewidth=0pt,
+				roundcorner= 3pt,
+				backgroundcolor= shadecolor,
+				outerlinecolor= shadecolor,
+				innertopmargin= \topskip,
+				innerbottommargin=\topskip,
+				leftmargin=-0.4cm,
+				rightmargin=-0.4cm
+			]}{
+		\end{mdframed}
+		% \end{codeboxback}
+		\smallskip
+	}
+}{}
 
 %%%%% THE SOLUTION TO WRAPPING ENVS!!!
 % Styling code output
