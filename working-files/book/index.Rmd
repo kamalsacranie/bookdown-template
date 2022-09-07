@@ -13,4 +13,11 @@ geometry: a4paper,margin=3cm
 description: ""
 ---
 
+```{r, setup, include=F}
+knitr::opts_chunk$set(
+  attr.source = ".numberLines", warning = F,
+  message = F, cache = T
+)
+```
+
 # Preface {-}

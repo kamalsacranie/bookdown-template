@@ -3,6 +3,22 @@
 % Making headings start at same place at first lettter
 \usepackage{titlesec}
 \titlelabel{\llap{\thetitle\quad}}
+\titleformat*{\section}{\Large\bfseries}
+% \titleformat*{\subsection}{\large\itshape\bfseries} % Italics don't look good
+\titleformat*{\subsection}{\large\bfseries}
+
+% fancyhdr for header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Kamal Sacranie}
+\fancyhead[L]{Chapter \thechapter}
+\fancyfoot[C]{\thepage}
+% Changing header rule style
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+% Fixes some spacing
+\setlength{\headheight}{13.59999pt}
 
 %%%%% Packages that need no configuration
 % Footnotes fixed to bottom
@@ -65,18 +81,6 @@
 \setcounter{bottomnumber}{3}
 \setcounter{totalnumber}{4}
 
-% fancyhdr for header and footer
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{Kamal Sacranie}
-\fancyhead[L]{Chapter \thechapter}
-\fancyfoot[C]{\thepage}
-% Changing header rule style
-\renewcommand{\headrulewidth}{2pt}
-\renewcommand{\footrulewidth}{0pt}
-
-
 % Creating shaded indented box for quote
 \usepackage{xcolor}
 \usepackage[framemethod=TikZ]{mdframed}
@@ -117,25 +121,28 @@
 	breakable,
 	drop fuzzy midday shadow=black!30!white,
 }
+
 % Renewing the shaded environemnt with new mdframed box
-\renewenvironment{Shaded}{
-	\bigskip
-	% \begin{codeboxback}%[drop fuzzy midday shadow]
-	\begin{mdframed}[
-			skipabove=\topskip*2,
-			outerlinewidth= 0,
-			linewidth=0pt,
-			roundcorner= 3pt,
-			backgroundcolor= shadecolor,
-			outerlinecolor= shadecolor,
-			innertopmargin= \topskip,
-			innerbottommargin=\topskip,
-			leftmargin=-0.4cm,
-			rightmargin=-0.4cm
-		]}{
-	\end{mdframed}
-	% \end{codeboxback}
-	\smallskip
+\ifcsmacro{Shaded}{ % Chcking if the environment exists
+	\renewenvironment{Shaded}{ % "Shaded" environment only present when using the syntax highlighting "zenburn" specified in _output
+		\bigskip
+		% \begin{codeboxback}%[drop fuzzy midday shadow]
+		\begin{mdframed}[
+				skipabove=\topskip*2,
+				outerlinewidth= 0,
+				linewidth=0pt,
+				roundcorner= 3pt,
+				backgroundcolor= shadecolor,
+				outerlinecolor= shadecolor,
+				innertopmargin= \topskip,
+				innerbottommargin=\topskip,
+				leftmargin=-0.4cm,
+				rightmargin=-0.4cm
+			]}{
+		\end{mdframed}
+		% \end{codeboxback}
+		\smallskip
+	}
 }
 
 %%%%% THE SOLUTION TO WRAPPING ENVS!!!
