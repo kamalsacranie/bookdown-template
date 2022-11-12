@@ -122,9 +122,16 @@
 	drop fuzzy midday shadow=black!30!white,
 }
 
+<<<<<<< HEAD
 % Renewing the shaded environemnt with new mdframed box
 \ifcsmacro{Shaded}{ % Chcking if the environment exists
 	\renewenvironment{Shaded}{ % "Shaded" environment only present when using the syntax highlighting "zenburn" specified in _output
+=======
+% This allows us to only run code if an environment exists
+\ifcsmacro{Shaded}{
+	% Renewing the shaded environemnt with new mdframed box
+	\renewenvironment{Shaded}{
+>>>>>>> cd1253aa9eb68d6117fae3aa13a503d5c03cc11a
 		\bigskip
 		% \begin{codeboxback}%[drop fuzzy midday shadow]
 		\begin{mdframed}[
@@ -143,7 +150,11 @@
 		% \end{codeboxback}
 		\smallskip
 	}
+<<<<<<< HEAD
 }
+=======
+}{}
+>>>>>>> cd1253aa9eb68d6117fae3aa13a503d5c03cc11a
 
 %%%%% THE SOLUTION TO WRAPPING ENVS!!!
 % Styling code output
