@@ -20,4 +20,19 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+include_svg <- function(path) {
+  if (knitr::is_latex_output()) {
+    output <- xfun::with_ext(path, "pdf")
+    system2(
+      "rsvg-convert",
+      c("-f", "pdf", "-a", "-o", shQuote(c(output, path)))
+    )
+  } else {
+    output <- path
+  }
+  knitr::include_graphics(output)
+}
+```
+
 # Preface {-}
