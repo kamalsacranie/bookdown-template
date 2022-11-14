@@ -16,7 +16,7 @@ description: ""
 ```{r, setup, include=F}
 knitr::opts_chunk$set(
   attr.source = ".numberLines", warning = F,
-  message = F, cache = T
+  message = F, cache = T, echo = F
 )
 ```
 
